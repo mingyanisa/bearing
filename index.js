@@ -26,7 +26,10 @@ app.set('view engine','pug')
 io.on('connection',(socket)=>{
     console.log('ming');
 });
-app.get('/test',(req,res)=>{
-    res.render('htmlTemplate',{});
+app.get('/',(req,res)=>{
+    res.render('index',{});
 });
+// app.get('/',(res,req)=>{
+//     res.render('',{});
+// });
 
