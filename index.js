@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var fs = require('fs-extra');
 var sql = require('mysql');
+var _ = require('lodash');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
