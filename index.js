@@ -1,4 +1,3 @@
-
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
@@ -11,25 +10,25 @@ var io = require('socket.io')(http);
 app.listen(3000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(function(req,res,next){
-    // Allow access from other domain
-    res.header("Access-Control-Allow-Origin","*");
-    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
-    // No cache kept in local
-    res.header("Cache-Control","no-cache, no-store, must-revalidate");
-    res.header("Pragma","no-cache");
-    res.header("Expires","0");
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", "0");
     next();
 });
-app.set('view engine','pug')
-io.on('connection',(socket)=>{
+
+app.set('view engine', 'pug')
+
+io.on('connection', (socket) => {
     console.log('ming');
 });
-app.get('/',(req,res)=>{
-    res.render('index',{});
-});
-// app.get('/',(res,req)=>{
-//     res.render('',{});
-// });
 
+app.get('/', (req, res) => {
+    res.render('index', {});
+});
