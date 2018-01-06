@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var fs = require('fs-extra');
 var sql = require('mysql');
 var _ = require('lodash');
+var CryptoJS = require("crypto-js");
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
