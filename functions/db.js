@@ -13,5 +13,5 @@ var sqlQuery = queryStatement => new Promise((reslove, reject) => {
 });
 
 module.exports = {
-    query: sqlQuery
+    listAllUser: sqlQuery('SELECT * FROM allUser')
 };
