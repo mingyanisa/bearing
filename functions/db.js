@@ -13,5 +13,6 @@ var sqlQuery = queryStatement => new Promise((reslove, reject) => {
 });
 
 module.exports = {
-    listAllUser: sqlQuery('SELECT * FROM allUser')
+    listAllUser: () =>  sqlQuery('SELECT * FROM allUser'),
+    findUser: (id) => sqlQuery('SELECT * FROM allUser WHERE id =`' + id + '`')
 };

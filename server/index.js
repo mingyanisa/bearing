@@ -6,12 +6,15 @@ var fs = require('fs-extra');
 var _ = require('lodash');
 var CryptoJS = require("crypto-js");
 var sql = require('../functions/db');
+var morgan = require('morgan')
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(morgan('tiny'));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -34,8 +37,4 @@ http.listen(3000, function () {
 io.on('connection', socket => {
     console.log('Socket io a user connected');
     console.log('ming');
-});
-
-app.get('/', (req, res) => {
-    res.render('index', {});
 });
