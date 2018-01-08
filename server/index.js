@@ -4,9 +4,10 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var fs = require('fs-extra');
 var _ = require('lodash');
+var passport = require('passport');
 var CryptoJS = require("crypto-js");
 var sql = require('../functions/db');
-var morgan = require('morgan')
+var morgan = require('morgan');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -32,9 +33,15 @@ var io = require('socket.io')(http);
 
 http.listen(3000, function () {
     console.log('Listening on port 3000');
+    console.log('Initialize Database');
+    // Use for re-model database
+    // sql.clearAllDatabase();
+    sql.initDatabase();
 });
 
 io.on('connection', socket => {
     console.log('Socket io a user connected');
     console.log('ming');
 });
+require('../config/passport')(passport);
+require('./route')(app, passport);
