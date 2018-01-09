@@ -45,3 +45,4 @@ io.on('connection', socket => {
 });
 require('../config/passport')(passport);
 require('./route')(app, passport);
+app.use('/admin', require('./adminRoute')(passport));
