@@ -8,4 +8,9 @@ module.exports = function(app, passport){
         successRedirect: '/',
         failureRedirect: '/',
     }));
+
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/admin',
+        failureRedirect: '/'
+    }));
 };

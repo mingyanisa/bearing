@@ -21,7 +21,7 @@ module.exports = function (passport) {
                     sql.users.addUser(email, password).then(result => {
                         return sql.users.findByEmail(email);
                     }).then(user => {
-                        return done(null, user[0].RowDataPacket);
+                        return done(null, user[0]);
                     });
                 } else {
                     return done(null, false);
@@ -29,6 +29,25 @@ module.exports = function (passport) {
             }).catch(error => {
                 return done(error);
             });
+        });
+    }));
+
+    passport.use('local-login', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    }, (req, email, password, done) => {
+        sql.users.findByEmail(email).then(user => {
+            if (user.length === 0) {
+                return done(null, false);
+            }
+            if (user[0].password === password) {
+                return done(null, user[0]);
+            } else {
+                return done(null, false);
+            }
+        }).catch(error => {
+            return done(error);
         });
     }));
 };

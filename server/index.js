@@ -26,6 +26,8 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(passport.initialize());
+
 app.set('view engine', 'pug')
 
 var http = require('http').Server(app);
