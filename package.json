@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon .",
+    "start": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,8 +14,10 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "fs-extra": "^5.0.0",
+    "morgan": "^1.9.0",
     "mysql": "^2.15.0",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.4",
     "socket.io": "^2.0.4"
   }

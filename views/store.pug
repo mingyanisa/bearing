@@ -1,0 +1,58 @@
+extends htmlTemplate
+block css
+    link(href="css/heroic-features.css" rel="stylesheet")
+    link(href="css/small-business.css" rel="stylesheet")
+block container
+    .container
+        // Heading Row
+        .row.my-4
+            .col-lg-8
+                img.img-fluid.rounded(src="http://placehold.it/900x400" alt="")
+            // /.col-lg-8
+            .col-lg-4
+                h1 Business Name or Tagline
+                p
+                    | This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!
+                a.btn.btn-primary.btn-lg(href="#") Call to Action!
+            // /.col-md-4
+        // /.row
+        // Call to Action Well
+        .card.text-white.bg-secondary.my-4.text-center
+            .card-body
+                p.text-white.m-0
+                    | This call to action card is a great place to showcase some important information or display a clever tagline!
+        // Content Row
+        .row
+            .col-md-4.mb-4
+                .card.h-100
+                    .card-body
+                        h2.card-title Card One
+                        p.card-text
+                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.
+                    .card-footer
+                        a.btn.btn-primary(href="#") More Info
+            // /.col-md-4
+            .col-md-4.mb-4
+                .card.h-100
+                    .card-body
+                        h2.card-title Card Two
+                        p.card-text
+                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.
+                    .card-footer
+                        a.btn.btn-primary(href="#") More Info
+            // /.col-md-4
+            .col-md-4.mb-4
+                .card.h-100
+                    .card-body
+                        h2.card-title Card Three
+                        p.card-text
+                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.
+                    .card-footer
+                        a.btn.btn-primary(href="#") More Info
+            // /.col-md-4
+        // /.row
+    // /.container
+    // /.container
+    // Bootstrap core JavaScript
+    block script
+        

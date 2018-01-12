@@ -5,8 +5,12 @@ var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var fs = require('fs-extra');
-var sql = require('mysql');
+var mysql = require('mysql');
 var io = require('socket.io')(http);
+var morgan = require('morgan');
+var passport = require('passport');
+require('../config/passport')(passport);
+
 
 app.listen(3000);
 app.use(express.static('public'));
@@ -26,10 +30,11 @@ app.set('view engine','pug')
 io.on('connection',(socket)=>{
     console.log('ming');
 });
-app.get('/',(req,res)=>{
-    res.render('index',{});
-});
-// app.get('/',(res,req)=>{
-//     res.render('',{});
-// });
 
+app.use(morgan('tiny'));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/admin',require('./adminRoute')());
+
+require('./route')(app,passport);
